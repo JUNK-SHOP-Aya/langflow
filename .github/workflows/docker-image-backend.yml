@@ -1,4 +1,4 @@
-name: Build and push Docker image
+name: Build and push Docker backend image
 
 on:
   push:
@@ -24,6 +24,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: src/backend
+          file: dev.Dockerfile
           push: true
           tags: ${{ env.DOCKER_IMAGE }}:${{ github.ref_name }}
